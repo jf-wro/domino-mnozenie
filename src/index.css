@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+
+:root, .theme-earth {
+  /* Dzieszkola.pl brand palette - Earth/Warm */
+  --bg-page:        #F4EFEB;
+  --bg-board:       #EDE7E1;
+  --bg-card:        #FFFFFF;
+  --color-brown:    #BF7540;
+  --color-brown-dk: #8B4E20;
+  --color-text:     #3D2B1F;
+  --color-muted:    #8C7B70;
+  --color-green:    #3D7A5A;
+  --color-blue:     #1D4ED8;
+  --color-border:   rgba(191, 117, 64, 0.18);
+
+  /* Tile */
+  --tile-bg:        #FFFFFF;
+  --tile-divider:   #E0D5CB;
+  --tile-shadow:    0 4px 16px rgba(63, 40, 20, 0.12), 0 1px 4px rgba(63, 40, 20, 0.08);
+  --tile-hover-shadow: 0 10px 28px rgba(63, 40, 20, 0.2), 0 2px 8px rgba(63, 40, 20, 0.12);
+
+  /* Brand accent */
+  --accent-color:   #BF7540;
+  --accent-hover:   #A35E2A;
+
+  /* Palette */
+  --palette-bg:     rgba(255, 255, 255, 0.85);
+  --palette-border: rgba(191, 117, 64, 0.2);
+
+  --expr-color:    #1A3FAA;
+  --result-color:  #2D6048;
+  --grid-color:    rgba(160, 100, 40, 0.12);
+
+  /* Glow colors for connect success */
+  --glow-inner:    rgba(61, 122, 90, 0.3);
+  --glow-outer:    rgba(61, 122, 90, 0.5);
+  --glow-accent:   rgba(191, 117, 64, 0.2);
+}
+
+.theme-forest {
+  --bg-page:        #EBF4EF;
+  --bg-board:       #E1EDE6;
+  --bg-card:        #FFFFFF;
+  --color-brown:    #40BF80;
+  --color-brown-dk: #208B5B;
+  --color-text:     #1F3D2F;
+  --color-muted:    #708C7D;
+  --color-green:    #286645;
+  --color-blue:     #1A65AA;
+  --color-border:   rgba(64, 191, 128, 0.18);
+
+  --tile-bg:        #FFFFFF;
+  --tile-divider:   #CBE0D5;
+  --tile-shadow:    0 4px 16px rgba(20, 63, 47, 0.12), 0 1px 4px rgba(20, 63, 47, 0.08);
+  --tile-hover-shadow: 0 10px 28px rgba(20, 63, 47, 0.2), 0 2px 8px rgba(20, 63, 47, 0.12);
+
+  --accent-color:   #40BF80;
+  --accent-hover:   #2AA36B;
+
+  --palette-bg:     rgba(255, 255, 255, 0.85);
+  --palette-border: rgba(64, 191, 128, 0.2);
+
+  --expr-color:     #1A65AA;
+  --result-color:   #286645;
+  --grid-color:     rgba(40, 160, 106, 0.12);
+
+  --glow-inner:     rgba(61, 122, 90, 0.3);
+  --glow-outer:     rgba(61, 122, 90, 0.5);
+  --glow-accent:    rgba(64, 191, 128, 0.2);
+}
+
+.theme-ocean {
+  --bg-page:        #EBF0F4;
+  --bg-board:       #E1E7ED;
+  --bg-card:        #FFFFFF;
+  --color-brown:    #407DBF;
+  --color-brown-dk: #20538B;
+  --color-text:     #1F2F3D;
+  --color-muted:    #707F8C;
+  --color-green:    #2D4C60;
+  --color-blue:     #1A3FAA;
+  --color-border:   rgba(64, 125, 191, 0.18);
+
+  --tile-bg:        #FFFFFF;
+  --tile-divider:   #CBD1E0;
+  --tile-shadow:    0 4px 16px rgba(20, 41, 63, 0.12), 0 1px 4px rgba(20, 41, 63, 0.08);
+  --tile-hover-shadow: 0 10px 28px rgba(20, 41, 63, 0.2), 0 2px 8px rgba(20, 41, 63, 0.12);
+
+  --accent-color:   #407DBF;
+  --accent-hover:   #2A62A3;
+
+  --palette-bg:     rgba(255, 255, 255, 0.85);
+  --palette-border: rgba(64, 125, 191, 0.2);
+
+  --expr-color:     #1A3FAA;
+  --result-color:   #2D4C60;
+  --grid-color:     rgba(40, 96, 160, 0.12);
+
+  --glow-inner:     rgba(61, 99, 122, 0.3);
+  --glow-outer:     rgba(61, 99, 122, 0.5);
+  --glow-accent:    rgba(64, 125, 191, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-page);
+  color: var(--color-text);
+  min-height: 100vh;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: var(--palette-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--palette-border);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { height: 8px; }
+::-webkit-scrollbar-track { background: rgba(191,117,64,0.08); border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: rgba(191,117,64,0.3); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(191,117,64,0.5); }
