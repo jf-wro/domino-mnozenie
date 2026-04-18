@@ -92,20 +92,21 @@
 
 /* Subtle ad link */
 .ad-link {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   color: var(--color-muted);
   text-decoration: none;
-  font-weight: 400;
-  margin-left: 0; /* aligned to start in 2nd row */
-  transition: color 0.15s;
+  font-weight: 500;
+  margin-left: 0;
+  transition: all 0.2s;
   white-space: nowrap;
-  opacity: 0.8;
+  opacity: 0.9;
   display: block;
 }
 
 .ad-link:hover {
   color: var(--color-brown);
-  text-decoration: underline;
+  opacity: 1;
+  text-shadow: 0 0 1px rgba(191, 117, 64, 0.2);
 }
 
 .header-actions {
