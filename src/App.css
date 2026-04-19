@@ -220,6 +220,78 @@
   border-color: var(--accent-hover);
 }
 
+.score-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-board);
+  padding: 0.25rem 0.5rem 0.25rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  margin-right: 0.5rem;
+}
+
+.score-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  user-select: none;
+}
+
+.score-toggle:hover {
+  color: var(--color-text);
+}
+
+.score-toggle input {
+  accent-color: var(--color-brown);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.score-display {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--color-brown);
+  background: rgba(191, 117, 64, 0.15);
+  padding: 0.1rem 0.6rem;
+  border-radius: 6px;
+  min-width: 3rem;
+  text-align: center;
+}
+
+.score-popup-header {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #40BF80;
+  text-shadow: 0 2px 8px rgba(64, 191, 128, 0.4), 0 0 2px #fff;
+  pointer-events: none;
+  z-index: 300;
+  animation: dropDownFade 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes dropDownFade {
+  0% { 
+    opacity: 0; 
+    transform: translate(-50%, -5px) scale(0.5); 
+  }
+  15% { 
+    opacity: 1; 
+    transform: translate(-50%, 5px) scale(1.1); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: translate(-50%, 35px) scale(0.9); 
+  }
+}
+
 /* ── Board ───────────────────────────────────────────── */
 .board-area {
   flex: 1;

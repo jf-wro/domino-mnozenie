@@ -201,6 +201,9 @@ function App() {
   const [boardOffset, setBoardOffset] = useState({ x: 0, y: 0 });
   const [boardZoom, setBoardZoom] = useState(1);
   const [isPanning, setIsPanning] = useState(false);
+  const [score, setScore] = useState(0);
+  const [isScoreEnabled, setIsScoreEnabled] = useState(false);
+  const [scorePopups, setScorePopups] = useState<{id: string, points: number}[]>([]);
 
   const dragInfo = useRef({
     startX: 0,
@@ -312,6 +315,8 @@ function App() {
     setTiles(initialTiles);
     setBoardOffset({ x: 0, y: 0 });
     setBoardZoom(1);
+    setScore(0);
+    setScorePopups([]);
   };
 
   // ----------------------------------------------------------
@@ -452,6 +457,7 @@ function App() {
         let isOverlapping = false;
         let validConnections = 0;
         let invalidConnections = 0;
+        let connectionValues: number[] = [];
 
         for (const Asq of draggedSquares) {
           for (const Bsq of allBoardSquares) {
@@ -478,6 +484,7 @@ function App() {
                   invalidConnections++;
                 } else {
                   validConnections++;
+                  connectionValues.push(Asq.half.value);
                 }
               }
             }
@@ -496,6 +503,21 @@ function App() {
           // ACCEPT CONNECTION
           setGlowId(draggingId);
           setTimeout(() => setGlowId(null), 600);
+
+          if (isScoreEnabled) {
+            const pointsGained = connectionValues.reduce((a, b) => a + b, 0);
+            if (pointsGained > 0) {
+              setScore(prev => prev + pointsGained);
+              const popupId = Math.random().toString(36).substring(2, 9);
+              setScorePopups(prev => [
+                ...prev, 
+                { id: popupId, points: pointsGained }
+              ]);
+              setTimeout(() => {
+                setScorePopups(prev => prev.filter(p => p.id !== popupId));
+              }, 2500);
+            }
+          }
 
           setTiles(prev => {
             let updated = prev.map(t =>
@@ -644,6 +666,28 @@ function App() {
             <button className={`mode-btn ${gameMode === 50 ? 'active' : ''}`} onClick={() => startNewGame(50)}>do 50</button>
             <button className={`mode-btn ${gameMode === 100 ? 'active' : ''}`} onClick={() => startNewGame(100)}>do 100</button>
           </div>
+          
+          <div className="score-control">
+            <label className="score-toggle">
+              <input 
+                type="checkbox" 
+                checked={isScoreEnabled} 
+                onChange={(e) => setIsScoreEnabled(e.target.checked)} 
+              />
+              <span className="toggle-label">Punkty</span>
+            </label>
+            {isScoreEnabled && (
+              <div className="score-display-wrapper" style={{ position: 'relative' }}>
+                <div className="score-display">{score}</div>
+                {scorePopups.map(popup => (
+                  <div key={popup.id} className="score-popup-header">
+                    +{popup.points}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
           <button className="header-btn" onClick={refreshPalette}>
             Wymień kostki
           </button>
