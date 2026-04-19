@@ -629,7 +629,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              mnozenie.dzieszkola.pl ↗
+              Sprawdź pełny kurs tabliczki mnożenia online na mnozenie.dzieszkola.pl ↗
             </a>
           </div>
         </div>

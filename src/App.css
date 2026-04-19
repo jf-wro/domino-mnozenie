@@ -98,7 +98,7 @@
   font-weight: 500;
   margin-left: 0;
   transition: all 0.2s;
-  white-space: nowrap;
+  white-space: normal;
   opacity: 0.9;
   display: block;
 }
